@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Про Roblox</title>
+  <style>
+    body {
+      font-family: Impact, Charcoal, sans-serif;
+      margin: 0;
+      background-color: #f9f9f9;
+      overflow-x: hidden;
+    }
+    header {
+      background-color: #333;
+      color: white;
+      padding: 15px 20px;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    header h1 {
+      font-size: 36px;
+      margin: 0;
+      padding-left: 20px; /* Відстань між текстом і зображенням */
+    }
+    .image-container {
+      position: absolute;
+      left: 0; /* Фото ближче до тексту */
+      width: 75px;  /* Менший розмір зображення */
+      height: 75px; /* Менший розмір зображення */
+      overflow: hidden;
+      border-radius: 50%;
+    }
+    .image-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      animation: zoomRotate 3s ease-in-out forwards;
+    }
+
+    @keyframes zoomRotate {
+      0% {
+        transform: scale(0.5) rotate(0deg);
+      }
+      50% {
+        transform: scale(1.5) rotate(720deg); /* Швидке збільшення і обертання */
+      }
+      100% {
+        transform: scale(1) rotate(0deg); /* Повільне зменшення і зупинка */
+      }
+    }
+
+    nav {
+      text-align: center;
+      padding: 10px;
+    }
+    nav a {
+      color: #0078d7;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .content {
+      padding: 20px;
+    }
+    h2, p {
+      font-size: 24px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+      opacity: 0;
+      transform: translateX(100%);
+      transition: all 0.8s ease-out;
+    }
+    h2.visible, p.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="image-container">
+      <img src="roblox.jpg" alt="Roblox">
+    </div>
+    <h1>Про Roblox</h1>
+  </header>
+  <nav>
+    <a href="index.html">Головна</a>
+    <a href="about.html">Про Roblox</a>
+    <a href="games.html">Популярні ігри</a>
+  </nav>
+  <div class="content">
+    <h2>Що таке Roblox?</h2>
+    <p>Roblox – це глобальна платформа для створення ігор та віртуальних світів.</p>
+  </div>
+  <script>
+    function isInViewport(element) {
+      const rect = element.getBoundingClientRect();
+      return rect.top <= window.innerHeight && rect.bottom >= 0;
+    }
+    const elements = document.querySelectorAll('h2, p');
+    window.addEventListener('scroll', () => {
+      elements.forEach((el) => {
+        if (isInViewport(el)) {
+          el.classList.add('visible');
+        }
+      });
+    });
+    window.addEventListener('DOMContentLoaded', () => {
+      elements.forEach((el) => {
+        if (isInViewport(el)) {
+          el.classList.add('visible');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
